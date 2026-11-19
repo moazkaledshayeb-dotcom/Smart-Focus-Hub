@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>⚡ وحش الإنتاجية - Smart OS</title>
+    
+    <!-- PWA Manifest ديناميكي مدمج عشان يشتغل كتطبيق موبايل فوراً -->
+    <link rel="manifest" id="pwa-manifest">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap');
+        
+        * { -webkit-tap-highlight-color: transparent; }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a 60%);
+            color: #f8fafc; 
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* تأثيرات نيون وأنيميشنات مطرقعة */
+        @keyframes neonPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.4), inset 0 0 10px rgba(99, 102, 241, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.7), inset 0 0 15px rgba(236, 72, 153, 0.3); }
+        }
+        .neon-box { animation: neonPulse 3s infinite; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .floating { animation: float 3.5s ease-in-out infinite; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.9) translateY(15px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .pop-in { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        /* شريط تمرير مخفي وأنيق */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+
+        .tab-active {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            color: white;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24 flex flex-col items-center">
+
+    <!-- الهيدر + شريط المستوى (Gamification) -->
+    <header class="w-full max-w-md p-4 pt-6 flex flex-col gap-3">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-black bg-gradient-to-l from-indigo-400 via-pink-500 to-amber-400 bg-clip-text text-transparent">
+                    ⚡ وحش الإنتاجية
+                </h1>
+                <p class="text-[11px] text-slate-400">نظامك الشخصي للسيطرة على يومك</p>
+            </div>
+            
+            <!-- زر تثبيت التطبيق على الموبايل -->
+            <button id="installBtn" onclick="installApp()" class="hidden bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 animate-bounce">
+                📲 تثبيت كتطبيق
+            </button>
+
+            <!-- عداد الاستمرارية Streak -->
+            <div class="bg-slate-800/90 border border-amber-500/40 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-lg">
+                <span class="text-base">🔥</span>
+                <div>
+                    <div id="streakCount" class="text-xs font-black text-amber-400 leading-none">1 يوم</div>
+                    <div class="text-[9px] text-slate-400">سلسلة الالتزام</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شريط الخبرة XP والمستوى -->
+        <div class="bg-slate-800/70 border border-slate-700/80 p-3 rounded-2xl backdrop-blur-md">
+            <div class="flex justify-between items-center text-xs mb-1.5">
+                <span class="font-bold text-indigo-300">المستوى <span id="userLevel" class="text-white bg-indigo-600 px-2 py-0.5 rounded-md mx-1">1</span> (مبتدئ طموح)</span>
+                <span class="font-mono text-pink-400 font-bold"><span id="userXP">0</span> / <span id="nextLevelXP">100</span> XP</span>
+            </div>
+            <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden p-0.5">
+                <div id="xpBar" class="bg-gradient-to-l from-pink-500 via-purple-500 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- التنقل السريع (Tabs) -->
+    <nav class="w-full max-w-md px-4 mb-4">
+        <div class="grid grid-cols-3 gap-2 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
+            <button onclick="switchTab('tasks')" id="tab-tasks" class="tab-active py-2 rounded-xl text-xs font-bold transition-all">
+                ⏰ التنبيهات والمهام
+            </button>
+            <button onclick="switchTab('pomodoro')" id="tab-pomodoro" class="text-slate-400 py-2 rounded-xl text-xs font-bold transition-all">
+                ⏱️ وضع التركيز
+            </button>
+            <button onclick="switchTab('goals')" id="tab-goals" class="text-slate-400 py-2 rounded-xl text-xs font-bold transition-all">
+                🎯 أهدافي وتحفيزي
+            </button>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="w-full max-w-md px-4 flex-1">
+
+        <!-- ================= التبويب الأول: التنبيهات والمهام ================= -->
+        <div id="view-tasks" class="space-y-4 pop-in">
+            
+            <!-- بطاقة التحفيز الذكي -->
+            <div class="bg-slate-800/80 border border-indigo-500/30 p-3.5 rounded-2xl neon-box relative overflow-hidden">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-[10px] font-bold text-pink-400">⚡ جرعة طاقة فورية</span>
+                    <button onclick="changeMotivation()" class="text-[10px] text-slate-400 hover:text-white">تغيير 🔄</button>
+                </div>
+                <p id="motivationText" class="text-xs font-bold text-slate-100 leading-relaxed">
+                    "الفرق بين الشخص العادي والناجح هو الالتزام في الأوقات اللي مفيهاش شغف."
+                </p>
+            </div>
+
+            <!-- إحصائيات سريعة -->
+            <div class="grid grid-cols-3 gap-2.5">
+                <div class="bg-slate-800/60 border border-slate-700/60 p-2.5 rounded-xl text-center">
+                    <div id="statTotal" class="text-lg font-black text-indigo-400">0</div>
+                    <div class="text-[10px] text-slate-400">الكل</div>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-700/60 p-2.5 rounded-xl text-center">
+                    <div id="statDone" class="text-lg font-black text-emerald-400">0</div>
+                    <div class="text-[10px] text-slate-400">أنجزته</div>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-700/60 p-2.5 rounded-xl text-center">
+                    <div id="statPercent" class="text-lg font-black text-amber-400">0%</div>
+                    <div class="text-[10px] text-slate-400">الإنجاز</div>
+                </div>
+            </div>
+
+            <!-- فورم إنشاء تنبيه/مهمة مخصصة بالكامل -->
+            <div class="bg-slate-800/70 border border-slate-700 p-4 rounded-2xl shadow-xl">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-xs font-bold text-slate-200">➕ برمجة تنبيه جديد</h2>
+                    <button type="button" onclick="testAlarmSound()" class="text-[10px] bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded-lg text-amber-300">
+                        🔊 تجربة صوت التنبيه
+                    </button>
+                </div>
+                
+                <form id="taskForm" class="space-y-2.5">
+                    <input type="text" id="taskTitle" placeholder="عنوان المهمة (مثال: مذاكرة برمجة / تمرين جيم)" required
+                        class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500">
+                    
+                    <input type="text" id="taskCustomMsg" placeholder="رسالة التنبيه اللي هتظهرلك (اختياري)..."
+                        class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-[10px] text-slate-400 block mb-1">⏰ موعد التنبيه</label>
+                            <input type="time" id="taskTime" required
+                                class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-400 block mb-1">📌 التصنيف والأهمية</label>
+                            <select id="taskCategory" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-2 py-2 text-xs text-white focus:outline-none focus:border-indigo-500">
+                                <option value="📚 مذاكرة">📚 مذاكرة (+30 XP)</option>
+                                <option value="💻 برمجة">💻 برمجة (+30 XP)</option>
+                                <option value="💪 جيم">💪 جيم وصحة (+25 XP)</option>
+                                <option value="🔥 مهمة عاجلة">🔥 مهمة عاجلة (+40 XP)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-l from-indigo-600 to-pink-600 font-bold text-white py-2.5 rounded-xl shadow-lg active:scale-95 transition-transform text-xs mt-1">
+                        حفظ وتفعيل التنبيه 🚀
+                    </button>
+                </form>
+            </div>
+
+            <!-- قائمة المهام -->
+            <div>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-slate-400">📋 جدولك اليومي</span>
+                    <button onclick="clearAllTasks()" class="text-[10px] text-rose-400 hover:underline">مسح الكل</button>
+                </div>
+                <div id="tasksList" class="space-y-2.5"></div>
+            </div>
+        </div>
+
+        <!-- ================= التبويب الثاني: وضع التركيز (Pomodoro) ================= -->
+        <div id="view-pomodoro" class="hidden space-y-5 pop-in text-center">
+            <div class="bg-slate-800/80 border border-indigo-500/40 p-6 rounded-3xl neon-box floating">
+                <span id="pomoStatus" class="bg-indigo-500/20 text-indigo-300 text-xs font-bold px-3 py-1 rounded-full">
+                    🔥 جلسة تركيز عميق
+                </span>
+                
+                <div id="pomoTimer" class="text-6xl font-black font-mono my-6 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent tracking-wider">
+                    25:00
+                </div>
+
+                <div class="flex justify-center gap-2 mb-4">
+                    <button onclick="setPomoTime(25, '🔥 جلسة تركيز عميق')" class="bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl text-xs hover:border-indigo-500">25 د مذاكرة</button>
+                    <button onclick="setPomoTime(50, '🚀 جلسة وحوش')" class="bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl text-xs hover:border-pink-500">50 د برمجة</button>
+                    <button onclick="setPomoTime(5, '☕ استراحة محارب')" class="bg-slate-900 border border-slate-700 px-3 py-1.5 rounded-xl text-xs hover:border-emerald-500">5 د راحة</button>
+                </div>
+
+                <div class="flex gap-3">
+                    <button id="pomoStartBtn" onclick="togglePomodoro()" class="flex-1 bg-gradient-to-l from-emerald-500 to-teal-600 text-white font-bold py-3 rounded-2xl shadow-lg active:scale-95 transition-transform text-sm">
+                        ابدأ التركيز ▶️
+                    </button>
+                    <button onclick="resetPomodoro()" class="bg-slate-700 text-slate-200 font-bold px-4 py-3 rounded-2xl active:scale-95 text-sm">
+                        🔄
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 border border-slate-700/60 p-4 rounded-2xl text-right">
+                <h3 class="text-xs font-bold text-amber-400 mb-1">💡 قاعدة التركيز الذهبية:</h3>
+                <p class="text-[11px] text-slate-300 leading-relaxed">
+                    اقفل إشعارات السوشيال ميديا طول الـ 25 دقيقة. كل جلسة بتخلصها بتديك <span class="text-emerald-400 font-bold">+50 XP</span> وبتقربك من هدفك!
+                </p>
+            </div>
+        </div>
+
+        <!-- ================= التبويب الثالث: أهدافي وتحفيزي ================= -->
+        <div id="view-goals" class="hidden space-y-4 pop-in">
+            
+            <!-- بطاقة الهدف الأكبر -->
+            <div class="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 border border-indigo-500/50 p-4 rounded-2xl shadow-xl">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-amber-300">🏆 هدفي الكبير القادم</span>
+                    <button onclick="editMainGoal()" class="text-[10px] bg-white/10 px-2 py-1 rounded-lg text-white">تعديل ✏️</button>
+                </div>
+                <p id="mainGoalText" class="text-sm font-black text-white leading-relaxed">
+                    التفوق في الدراسة، بناء مشاريع برمجية قوية، والوصول لأفضل فورمة في الجيم! 💪💻
+                </p>
+            </div>
+
+            <!-- ميزة تصدير واستيراد البيانات (عشان لو غيرت الموبايل أو عملت APK) -->
+            <div class="bg-slate-800/70 border border-slate-700 p-4 rounded-2xl space-y-3">
+                <h3 class="text-xs font-bold text-slate-200">💾 إدارة بياناتك (محفوظة على جهازك)</h3>
+                <p class="text-[11px] text-slate-400">كل مهامك ومستواك محفوظين محلياً بدون إنترنت أو حساب. تقدر تاخد نسخة احتياطية في أي وقت:</p>
+                <div class="flex gap-2">
+                    <button onclick="exportData()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-xl text-xs font-bold">
+                        📤 نسخ البيانات
+                    </button>
+                    <button onclick="importData()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white py-2 rounded-xl text-xs font-bold">
+                        📥 استرجاع بيانات
+                    </button>
+                </div>
+            </div>
+
+            <!-- دليل تحويله لـ APK في دقيقة -->
+            <div class="bg-slate-800/70 border border-emerald-500/30 p-4 rounded-2xl space-y-2">
+                <h3 class="text-xs font-bold text-emerald-400">📱 إزاي تحفظه كتطبيق موبايل (APK)؟</h3>
+                <ol class="text-[11px] text-slate-300 space-y-1.5 list-decimal list-inside leading-relaxed">
+                    <li><b>الطريقة الأسرع (ثواني):</b> افتح الرابط من متصفح Chrome على موبايلك، دوس على الـ 3 نقط فوق واختار <b>"إضافة إلى الشاشة الرئيسية" (Install App)</b> هينزل بأيقونة كأنه تطبيق متجر!</li>
+                    <li><b>ملف APK رسمي:</b> ارفع الملف على GitHub Pages، وانسخ الرابط وحطه في موقع <b>PWABuilder.com</b> أو <b>WebIntoApp</b> هيطلعلك ملف APK جاهز للتثبيت والمشاركة فوراً.</li>
+                </ol>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- نافذة التنبيه المنبثقة (Alarm Modal) -->
+    <div id="alertModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border-2 border-pink-500 p-6 rounded-3xl max-w-xs w-full text-center neon-box pop-in">
+            <div class="text-4xl mb-2 animate-bounce">⏰</div>
+            <span class="text-[10px] bg-pink-500/20 text-pink-400 px-2.5 py-0.5 rounded-full font-bold">تنبيه مجدول</span>
+            <h3 class="text-lg font-black text-white mt-2 mb-1" id="alertModalTitle">اسم المهمة</h3>
+            <p id="alertModalDesc" class="text-xs text-slate-300 mb-5 leading-relaxed">رسالة التنبيه</p>
+            <button onclick="closeAlertModal()" class="w-full bg-gradient-to-l from-indigo-600 to-pink-600 text-white font-bold py-3 rounded-xl text-xs shadow-lg active:scale-95">
+                استلمت، هبدأ حالاً! 🔥
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ================= 1. إعداد PWA Manifest ديناميكي لتثبيت التطبيق =================
+        const manifestData = {
+            name: "وحش الإنتاجية - Smart OS",
+            short_name: "وحش الإنتاجية",
+            start_url: ".",
+            display: "standalone",
+            background_color: "#0f172a",
+            theme_color: "#0f172a",
+            icons: [{
+                src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234f46e5'/><text x='50%' y='55%' font-size='55' text-anchor='middle' dominant-baseline='middle'>⚡</text></svg>",
+                sizes: "512x512",
+                type: "image/svg+xml"
+            }]
+        };
+        const stringManifest = JSON.stringify(manifestData);
+        const blob = new Blob([stringManifest], {type: 'application/json'});
+        document.getElementById('pwa-manifest').setAttribute('href', URL.createObjectURL(blob));
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').classList.remove('hidden');
+        });
+
+        async function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('installBtn').classList.add('hidden');
+                }
+                deferredPrompt = null;
+            }
+        }
+
+        // ================= 2. محرك الصوت البرمجي (Web Audio API) =================
+        function playAlarmSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const notes = [523.25, 659.25, 783.99, 1046.50]; // نغمة حماسية صاعدة
+                notes.forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.15);
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.15);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + i * 0.15 + 0.4);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + i * 0.15);
+                    osc.stop(ctx.currentTime + i * 0.15 + 0.4);
+                });
+            } catch (e) { console.log("Audio requires user interaction first"); }
+        }
+
+        function testAlarmSound() {
+            playAlarmSound();
+            if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
+        }
+
+        // ================= 3. إدارة البيانات، المستويات، والمهام =================
+        let state = JSON.parse(localStorage.getItem('beast_app_state')) || {
+            tasks: [],
+            xp: 0,
+            level: 1,
+            streak: 1,
+            lastActiveDate: new Date().toDateString(),
+            mainGoal: "التفوق في الدراسة، بناء مشاريع برمجية قوية، والوصول لأفضل فورمة في الجيم! 💪💻"
+        };
+
+        // تحديث الـ Streak اليومي
+        const today = new Date().toDateString();
+        if (st
