@@ -1,11 +1,13 @@
 {
-  "name": "معاذ شعيب | Life OS",
+  "name": "Life OS — Cyber Command",
   "short_name": "Life OS",
+  "description": "Your personal cyber command center",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0c1422",
-  "theme_color": "#101b2d",
+  "orientation": "portrait",
+  "background_color": "#070b12",
+  "theme_color": "#070b12",
   "lang": "ar",
-  "dir": "rtl",
-  "icons": []
+  "dir": "rtl"
 }
