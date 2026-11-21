@@ -1,105 +1,818 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080a0e"><meta name="description" content="DAYCORE — نظامك الشخصي لتنظيم الوقت والعادات والتركيز">
-<title>DAYCORE | نظام يومك</title>
-<link rel="manifest" href="./manifest.json">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
-:root{--bg:#080a0e;--panel:#10141c;--panel2:#151b25;--line:#252d3a;--text:#f2f5fa;--muted:#8793a6;--gold:#d8b46a;--mint:#8ee0c2;--red:#ff7f87;--blue:#83b9ff;--r:20px}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#1b2534 0,transparent 38%),var(--bg);color:var(--text);font-family:Cairo,system-ui,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer;border:0;color:inherit}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.wrap{max-width:1120px;margin:auto;padding:20px 16px 100px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.mark{width:44px;height:44px;border:1px solid #55482d;border-radius:15px;display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:22px;background:linear-gradient(145deg,#242015,#10131a);box-shadow:0 0 25px #d8b46a12}.brand h1{font-size:18px;letter-spacing:2px;margin:0;font-weight:900}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:0}.datepill{border:1px solid var(--line);background:#111720;border-radius:14px;padding:9px 12px;color:var(--muted);font-size:12px}.hero{display:grid;grid-template-columns:1.4fr .9fr;gap:16px;margin-bottom:16px}.card{background:linear-gradient(145deg,#131923,#0d1118);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:0 16px 45px #0002}.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:1px}.hero h2{font-size:clamp(26px,5vw,42px);line-height:1.35;margin:8px 0 6px;font-weight:900}.hero p{color:var(--muted);margin:0;font-size:13px}.progresswrap{margin-top:22px;display:flex;align-items:center;gap:14px}.ring{width:76px;height:76px;border-radius:50%;background:conic-gradient(var(--gold) var(--p,0%),#27303d 0);display:grid;place-items:center;flex-shrink:0}.ring:before{content:attr(data-val);width:60px;height:60px;border-radius:50%;background:#111620;display:grid;place-items:center;font-size:17px;font-weight:900}.progressinfo strong{display:block;font-size:18px}.progressinfo span{color:var(--muted);font-size:12px}.quote{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:220px}.quote:after{content:"✦";position:absolute;left:12px;bottom:-45px;font-size:150px;color:#d8b46a08}.quote p{font-size:20px;font-weight:700;line-height:1.8;margin:18px 0;position:relative}.quote .qfoot{color:var(--muted);font-size:11px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}.stat{padding:15px}.stat span{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:23px;display:block;margin-top:5px}.stat em{font-size:11px;color:var(--gold);font-style:normal}.layout{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.sectionhead h3{margin:0;font-size:17px}.sectionhead small{color:var(--muted);font-size:11px}.btn{background:var(--gold);color:#17130b;border-radius:12px;padding:10px 14px;font-weight:900;font-size:12px}.btn.secondary{background:#202835;color:var(--text);border:1px solid #303a49}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}.btn.danger{background:#3b2027;color:#ffb0b6}.timeline{display:flex;flex-direction:column;gap:10px}.task{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:12px;border:1px solid #222b37;border-radius:15px;background:#111720}.task.done{opacity:.55}.task.done .taskname{text-decoration:line-through}.time{font-size:12px;color:var(--gold);font-weight:800;text-align:center}.taskname{font-size:13px;font-weight:800}.taskmeta{font-size:10px;color:var(--muted);margin-top:3px}.taskactions{display:flex;gap:6px}.iconbtn{width:32px;height:32px;border-radius:10px;background:#202835;color:#aab5c4;display:grid;place-items:center;font-size:14px}.iconbtn.check{color:var(--mint)}.empty{border:1px dashed #303a49;border-radius:15px;padding:24px;text-align:center;color:var(--muted);font-size:13px}.habits{display:flex;flex-direction:column;gap:9px}.habit{display:flex;align-items:center;gap:11px;padding:12px;border-radius:14px;background:#111720;border:1px solid #222b37}.habitcheck{width:27px;height:27px;border:1px solid #435064;border-radius:9px;background:transparent;color:var(--mint);font-weight:900}.habit.checked .habitcheck{background:#1e473d;border-color:#397967}.habittext{flex:1;font-size:13px;font-weight:800}.habittext small{display:block;color:var(--muted);font-size:10px;font-weight:400}.streak{font-size:11px;color:var(--gold)}.focusbar{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(100deg,#282318,#171b23);border:1px solid #51452e;border-radius:18px;padding:16px}.focusbar strong{display:block;font-size:15px}.focusbar span{color:#b9aa8c;font-size:11px}.focusclock{font-size:24px;font-weight:900;color:var(--gold);direction:ltr}.bottomnav{position:fixed;bottom:0;left:0;right:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#090c12eF;backdrop-filter:blur(18px);border-top:1px solid #202733;display:flex;justify-content:center;gap:10px;z-index:5}.bottomnav button{background:transparent;color:var(--muted);font-size:11px;padding:8px 16px;border-radius:12px}.bottomnav button.active{background:#222a35;color:var(--gold)}.modal{position:fixed;inset:0;background:#000a;backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center;z-index:10;padding:12px}.modal.open{display:flex}.sheet{width:min(100%,520px);max-height:90vh;overflow:auto;background:#121720;border:1px solid #303947;border-radius:24px;padding:20px}.sheet h3{margin:0 0 18px}.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:11px;color:var(--muted)}.field input,.field select{background:#0b1017;border:1px solid #303947;border-radius:12px;padding:12px;color:var(--text);width:100%}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sheetactions{display:flex;gap:8px;margin-top:18px}.sheetactions button{flex:1}.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-20px);opacity:0;pointer-events:none;background:#e2c17a;color:#17130b;padding:10px 16px;border-radius:12px;font-weight:900;font-size:12px;z-index:20;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.focusmode{position:fixed;inset:0;background:#080a0e;z-index:30;display:none;align-items:center;justify-content:center;text-align:center;padding:24px}.focusmode.open{display:flex}.focusinner{max-width:500px;width:100%}.focusinner .bigtime{font-size:clamp(52px,15vw,100px);font-weight:900;color:var(--gold);direction:ltr;line-height:1.2}.focusinner h2{font-size:25px}.focusinner p{color:var(--muted)}.focuscontrols{display:flex;justify-content:center;gap:10px;margin-top:24px}.focuscontrols button{min-width:110px}.settingsrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}.settingsrow:last-child{border:0}.smallmuted{font-size:11px;color:var(--muted);line-height:1.8}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:14px}.daycell{border-radius:10px;background:#1a222e;padding:9px 2px;text-align:center;font-size:10px;color:var(--muted)}.daycell b{display:block;color:var(--text);font-size:13px;margin-top:4px}.daycell.today{border:1px solid var(--gold);color:var(--gold)}
-@media(max-width:760px){.hero,.layout{grid-template-columns:1fr}.hero h2{font-size:30px}.quote{min-height:170px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.wrap{padding-top:14px}.card{padding:16px}.datepill{font-size:10px}.focusbar{padding:13px}}
-</style></head>
-<body><div class="wrap">
-<header class="top"><div class="brand"><div class="mark">D</div><div><h1>DAYCORE</h1><small>YOUR DAY. YOUR CONTROL.</small></div></div><div class="datepill" id="todayLabel">—</div></header>
-<section class="hero"><div class="card"><div class="eyebrow">DAILY COMMAND CENTER</div><h2 id="greeting">يوم جديد، فرصة جديدة.</h2><p id="heroSub">خطوة واحدة بتركيز أحسن من عشر خطوات مشتتة.</p><div class="progresswrap"><div class="ring" id="ring" data-val="0%"></div><div class="progressinfo"><strong id="progressTitle">لسه البداية</strong><span id="progressText">ابدأ بمهمة صغيرة تكسر الجمود.</span></div></div></div><div class="card quote"><div><div class="eyebrow">إشارة اليوم ◈</div><p id="dailyAdvice">ابدأ قبل ما تحس إنك جاهز. الجاهزية بتيجي بعد البداية.</p></div><div class="qfoot" id="adviceFoot">DAYCORE FIELD NOTE / 01</div></div></section>
-<section class="stats"><div class="card stat"><span>مهام اليوم</span><strong id="statTasks">0/0</strong><em>إنجازات صغيرة</em></div><div class="card stat"><span>العادات</span><strong id="statHabits">0/0</strong><em>ثباتك أهم من الكمال</em></div><div class="card stat"><span>وقت التركيز</span><strong id="statFocus">0د</strong><em>وقت مستثمر في نفسك</em></div></section>
-<div class="layout"><section class="card"><div class="sectionhead"><div><h3>مسار اليوم</h3><small>جدول مرن، مش قيود</small></div><button class="btn" id="addTask">＋ مهمة</button></div><div class="timeline" id="taskList"></div><div class="focusbar"><div><strong id="focusTaskName">اختار مهمة وابدأ</strong><span>جلسة تركيز • 25 دقيقة</span></div><div class="focusclock" id="focusMini">25:00</div><button class="btn secondary" id="startFocus">ابدأ</button></div></section>
-<section class="card"><div class="sectionhead"><div><h3>عاداتك اليومية</h3><small>ابنِ نسخة أقوى منك بهدوء</small></div><button class="btn secondary" id="addHabit">＋ عادة</button></div><div class="habits" id="habitList"></div><div class="week" id="week"></div><p class="smallmuted">لو فاتك يوم، متعاقبش نفسك. ارجع تاني يوم وخلي الاستمرارية أقوى من المثالية.</p></section></div>
-<section class="card" style="margin-top:16px"><div class="sectionhead"><div><h3>إعادة ضبط اليوم</h3><small>اتأخرت؟ خطتك لسه قابلة للإنقاذ.</small></div><button class="btn secondary" id="resetDay">رتّب باقي يومي</button></div><p class="smallmuted">التطبيق هيجمع المهام غير المكتملة ويرتبها من الوقت الحالي، من غير ما يمسح أي حاجة.</p></section>
-<section class="card" id="settings" style="margin-top:16px;display:none"><div class="sectionhead"><h3>إعدادات النظام</h3><button class="btn ghost" id="closeSettings">إغلاق</button></div><div class="settingsrow"><span>تفعيل إشعارات المتصفح</span><button class="btn secondary" id="notifyBtn">تفعيل</button></div><div class="settingsrow"><span>وقت بداية يومك</span><input id="wakeTime" type="time" value="07:00" style="background:#0b1017;color:white;border:1px solid #303947;border-radius:9px;padding:7px"></div><div class="settingsrow"><span>وقت النوم المستهدف</span><input id="sleepTime" type="time" value="23:00" style="background:#0b1017;color:white;border:1px solid #303947;border-radius:9px;padding:7px"></div><div class="settingsrow"><span>بياناتك محفوظة محليًا على جهازك</span><button class="btn ghost" id="exportBtn">نسخة احتياطية</button></div><p class="smallmuted">ملاحظة: إشعارات المواعيد تعمل أثناء فتح التطبيق أو حسب دعم المتصفح للنشاط بالخلفية. لو التطبيق مقفول تمامًا، قد لا تصل إشعارات دقيقة على كل الأجهزة.</p></section>
-</div><nav class="bottomnav"><button class="active" id="navHome">⌂ اليوم</button><button id="navHabits">✦ العادات</button><button id="navSettings">⚙ الإعدادات</button></nav>
-<div class="modal" id="modal"><div class="sheet"><h3 id="modalTitle">إضافة مهمة</h3><form id="itemForm"><input type="hidden" id="itemType"><input type="hidden" id="editId"><div class="field"><label id="nameLabel">اسم المهمة</label><input id="itemName" maxlength="90" required placeholder="مثلاً: مذاكرة الفيزياء"></div><div id="taskFields"><div class="formrow"><div class="field"><label>الوقت</label><input id="itemTime" type="time" value="16:00"></div><div class="field"><label>المدة (دقيقة)</label><input id="itemDuration" type="number" min="5" max="360" value="45"></div></div><div class="field"><label>تذكير قبل الموعد</label><select id="itemReminder"><option value="0">في موعدها</option><option value="5">قبلها بـ 5 دقائق</option><option value="10">قبلها بـ 10 دقائق</option><option value="15">قبلها بـ 15 دقيقة</option></select></div></div><div class="sheetactions"><button class="btn" type="submit">حفظ</button><button class="btn ghost" type="button" id="cancelModal">إلغاء</button></div></form></div></div>
-<div class="focusmode" id="focusMode"><div class="focusinner"><div class="eyebrow">DEEP FOCUS MODE</div><h2 id="focusTitle">وقت التركيز</h2><p>خلي المهمة دي هي الحاجة الوحيدة المهمة دلوقتي.</p><div class="bigtime" id="focusBig">25:00</div><div class="focuscontrols"><button class="btn" id="pauseFocus">إيقاف مؤقت</button><button class="btn secondary" id="endFocus">إنهاء</button></div></div></div><div class="toast" id="toast"></div>
-<script>
-const $=id=>document.getElementById(id), KEY='daycore_v1';
-const advices=['ابدأ قبل ما تحس إنك جاهز. الجاهزية بتيجي بعد البداية.','مش مطلوب تخلص كل حاجة؛ مطلوب تبدأ الحاجة الأهم.','خمس دقايق تركيز أحسن من ساعة تأجيل.','متقارنش يومك بيوم حد. قارن نفسك بنسختك امبارح.','لو الخطة وقعت، عدّلها. متلغيش اليوم كله.','الراحة جزء من الخطة، مش مكافأة لازم تستحقها.','اقفل المشتتات قبل ما تعتمد على قوة إرادتك.','الإنجاز الصغير النهارده بيبني ثقة بكرة.','ركز على الخطوة اللي قدامك، مش الطريق كله.','التقدم الهادئ اللي بيتكرر أقوى من الحماس المؤقت.'];
-let data=load(),focusSeconds=1500,focusInterval=null,focusRunning=false,focusElapsed=0;
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||{tasks:[],habits:[{id:id(),name:'مذاكرة بتركيز',streak:0,days:[]},{id:id(),name:'قراءة أو تعلم',streak:0,days:[]},{id:id(),name:'حركة أو تمرين',streak:0,days:[]},{id:id(),name:'ترتيب المكان',streak:0,days:[]}],focusMinutes:0,settings:{wake:'07:00',sleep:'23:00'}}}catch(e){return {tasks:[],habits:[],focusMinutes:0,settings:{wake:'07:00',sleep:'23:00'}}}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data))}
-function id(){return Math.random().toString(36).slice(2,10)}
-function dateKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function toast(s){$('toast').textContent=s;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2200)}
-function init(){let d=new Date();$('todayLabel').textContent=d.toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long'});let h=d.getHours();$('greeting').textContent=h<11?'صباح القوة.':h<16?'نهارك فرصة جديدة.':h<20?'مساء الإنجاز.':'خد نفس وابدأ بهدوء.';$('dailyAdvice').textContent=advices[(d.getDate()+d.getMonth()*3)%advices.length];$('adviceFoot').textContent='DAYCORE FIELD NOTE / '+String((d.getDate()%9)+1).padStart(2,'0');$('wakeTime').value=data.settings.wake||'07:00';$('sleepTime').value=data.settings.sleep||'23:00';render()}
-function render(){renderTasks();renderHabits();renderStats();renderWeek()}
-function renderTasks(){let list=$('taskList'),items=data.tasks.slice().sort((a,b)=>a.time.localeCompare(b.time));if(!items.length){list.innerHTML='<div class="empty">لسه مفيش مهام.<br>ضيف أول خطوة في يومك ✦</div>';return}list.innerHTML=items.map(t=>'<div class="task '+(t.done?'done':'')+'"><div class="time">'+esc(t.time)+'</div><div><div class="taskname">'+esc(t.name)+'</div><div class="taskmeta">'+t.duration+' دقيقة'+(t.reminder?' • تذكير قبلها بـ '+t.reminder+' د':'')+'</div></div><div class="taskactions"><button class="iconbtn check" title="تم" data-check="'+t.id+'">✓</button><button class="iconbtn" title="تعديل" data-edit="'+t.id+'">✎</button><button class="iconbtn" title="حذف" data-del="'+t.id+'">×</button></div></div>').join('');list.querySelectorAll('[data-check]').forEach(b=>b.onclick=()=>{let t=data.tasks.find(x=>x.id===b.dataset.check);t.done=!t.done;save();render()});list.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>openItem('task',data.tasks.find(x=>x.id===b.dataset.edit)));list.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{data.tasks=data.tasks.filter(x=>x.id!==b.dataset.del);save();render()})}
-function renderHabits(){let list=$('habitList'),today=dateKey();if(!data.habits.length){list.innerHTML='<div class="empty">ضيف عادة بسيطة تحب تثبت عليها.</div>';return}list.innerHTML=data.habits.map(h=>{let done=h.days.includes(today);return '<div class="habit '+(done?'checked':'')+'"><button class="habitcheck" data-hcheck="'+h.id+'">'+(done?'✓':'')+'</button><div class="habittext">'+esc(h.name)+'<small>التزامك بيتبني يوم ورا يوم</small></div><span class="streak">🔥 '+(h.streak||0)+'</span><button class="iconbtn" data-hdel="'+h.id+'">×</button></div>'}).join('');list.querySelectorAll('[data-hcheck]').forEach(b=>b.onclick=()=>{let h=data.habits.find(x=>x.id===b.dataset.hcheck),k=dateKey();if(h.days.includes(k))h.days=h.days.filter(x=>x!==k);else{h.days.push(k);h.streak=(h.streak||0)+1}save();render()});list.querySelectorAll('[data-hdel]').forEach(b=>b.onclick=()=>{data.habits=data.habits.filter(x=>x.id!==b.dataset.hdel);save();render()})}
-function renderStats(){let done=data.tasks.filter(t=>t.done).length,hd=data.habits.filter(h=>h.days.includes(dateKey())).length,total=data.tasks.length+data.habits.length,complete=done+hd,p=total?Math.round(complete/total*100):0;$('ring').style.setProperty('--p',p+'%');$('ring').dataset.val=p+'%';$('progressTitle').textContent=p===100?'يوم مكتمل!':p>0?'أنت بتتقدم':'لسه البداية';$('progressText').textContent=p===100?'فخورين بالإنجاز ده.':p>0?'كمّل خطوة كمان، قربت.':'ابدأ بمهمة صغيرة تكسر الجمود.';$('heroSub').textContent=p>0?'أحسنت، حافظ على إيقاعك من غير ضغط.':'خطوة واحدة بتركيز أحسن من عشر خطوات مشتتة.';$('statTasks').textContent=done+'/'+data.tasks.length;$('statHabits').textContent=hd+'/'+data.habits.length;$('statFocus').textContent=(data.focusMinutes||0)+'د'}
-function renderWeek(){let days=['ح','ن','ث','ر','خ','ج','س'],now=new Date(),start=new Date(now);start.setDate(now.getDate()-6);$('week').innerHTML=Array.from({length:7},(_,i)=>{let d=new Date(start);d.setDate(start.getDate()+i);let k=dateKey(d),count=data.habits.filter(h=>h.days.includes(k)).length;return '<div class="daycell '+(k===dateKey()?'today':'')+'">'+days[d.getDay()]+'<b>'+count+'</b></div>'}).join('')}
-function openItem(type,item){$('itemType').value=type;$('editId').value=item?item.id:'';$('modalTitle').textContent=(item?'تعديل ':'إضافة ')+(type==='task'?'مهمة':'عادة');$('nameLabel').textContent=type==='task'?'اسم المهمة':'اسم العادة';$('itemName').value=item?item.name:'';$('taskFields').style.display=type==='task'?'block':'none';if(type==='task'){$('itemTime').value=item?item.time:'16:00';$('itemDuration').value=item?item.duration:45;$('itemReminder').value=item?item.reminder:0}$('modal').classList.add('open');setTimeout(()=>$('itemName').focus(),100)}
-$('addTask').onclick=()=>openItem('task');$('addHabit').onclick=()=>openItem('habit');$('cancelModal').onclick=()=>$('modal').classList.remove('open');
-$('itemForm').onsubmit=e=>{e.preventDefault();let type=$('itemType').value,name=$('itemName').value.trim(),eid=$('editId').value;if(!name)return;if(type==='task'){let obj={id:eid||id(),name,time:$('itemTime').value||'16:00',duration:Math.max(5,Number($('itemDuration').value)||45),reminder:Number($('itemReminder').value)||0,done:false};if(eid){let old=data.tasks.find(t=>t.id===eid);obj.done=old?old.done:false;data.tasks=data.tasks.map(t=>t.id===eid?obj:t)}else data.tasks.push(obj)}else{if(eid){data.habits=data.habits.map(h=>h.id===eid?{...h,name}:h)}else data.habits.push({id:id(),name,streak:0,days:[]})}$('modal').classList.remove('open');save();render();toast('اتحفظت بنجاح ✦')};
-$('resetDay').onclick=()=>{let now=new Date(),time=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'),pending=data.tasks.filter(t=>!t.done).sort((a,b)=>a.time.localeCompare(b.time));pending.forEach((t,i)=>{let mins=now.getHours()*60+now.getMinutes()+i*30;t.time=String(Math.floor(mins/60)%24).padStart(2,'0')+':'+String(mins%60).padStart(2,'0')});save();render();toast(pending.length?'أعدنا ترتيب '+pending.length+' مهمة':'كل مهامك خلصت! خُد راحتك')};
-function updateClock(){let m=Math.floor(focusSeconds/60),s=focusSeconds%60,txt=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');$('focusMini').textContent=txt;$('focusBig').textContent=txt}
-function startFocus(){if(focusRunning)return;focusRunning=true;$('focusMode').classList.add('open');$('focusTitle').textContent=$('focusTaskName').textContent==='اختار مهمة وابدأ'?'جلسة تركيز':$('focusTaskName').textContent;$('pauseFocus').textContent='إيقاف مؤقت';focusInterval=setInterval(()=>{focusSeconds--;focusElapsed++;updateClock();if(focusSeconds<=0){pauseFocus();data.focusMinutes=(data.focusMinutes||0)+25;focusElapsed=0;save();render();beep();toast('جلسة خلصت! خُد راحة قصيرة.');focusSeconds=1500;updateClock()}},1000)}
-function pauseFocus(){focusRunning=false;clearInterval(focusInterval);$('pauseFocus').textContent='استكمال'}
-$('startFocus').onclick=()=>{if(!focusRunning)startFocus()};$('pauseFocus').onclick=()=>{if(focusRunning)pauseFocus();else startFocus()};$('endFocus').onclick=()=>{pauseFocus();if(focusElapsed>=60){data.focusMinutes=(data.focusMinutes||0)+Math.floor(focusElapsed/60);save();render()}focusElapsed=0;focusSeconds=1500;updateClock();$('focusMode').classList.remove('open')};
-function beep(){try{let c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=660;g.gain.value=.08;o.start();o.stop(c.currentTime+.35)}catch(e){}}
-$('notifyBtn').onclick=async()=>{if(!('Notification'in window)){toast('المتصفح لا يدعم الإشعارات');return}let p=await Notification.requestPermission();toast(p==='granted'?'الإشعارات اتفعلت':'لم يتم تفعيل الإشعارات')};
-function reminderCheck(){if(!('Notification'in window)||Notification.permission!=='granted')return;let now=new Date(),today=dateKey();data.tasks.forEach(t=>{if(t.done)return;let [h,m]=t.time.split(':').map(Number),when=new Date();when.setHours(h,m,0,0);when.setMinutes(when.getMinutes()-(t.reminder||0));let key=t.id+'_'+today;if(Math.abs(now-when)<35000&&!sessionStorage.getItem(key)){new Notification('موعد مهم • DAYCORE',{body:t.name+' — وقت تبدأ مهمتك',tag:key});sessionStorage.setItem(key,'1')}})}
-setInterval(reminderCheck,30000);
-$('navSettings').onclick=()=>{$('settings').style.display='block';$('settings').scrollIntoView({behavior:'smooth'});document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.remove('active'));$('navSettings').classList.add('active')};$('closeSettings').onclick=()=>$('settings').style.display='none';$('navHome').onclick=()=>{window.scrollTo({top:0,behavior:'smooth'});document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.remove('active'));$('navHome').classList.add('active')};$('navHabits').onclick=()=>{$('habitList').scrollIntoView({behavior:'smooth',block:'center'});document.querySelectorAll('.bottomnav button').forEach(b=>b.classList.remove('active'));$('navHabits').classList.add('active')};
-$('wakeTime').onchange=e=>{data.settings.wake=e.target.value;save()};$('sleepTime').onchange=e=>{data.settings.sleep=e.target.value;save()};
-$('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='daycore-backup.json';a.click();URL.revokeObjectURL(a.href);toast('جهزنا النسخة الاحتياطية')};
-if('serviceWorker'in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-init();updateClock();
-</script>
-<style id="nox-redesign">
-body{background:#05070b!important}
-.wrap,.bottomnav{display:none!important}
-#noxApp{--accent:#b7f36b;--glow:rgba(183,243,107,.18);min-height:100vh;color:#eef2f8;font-family:Cairo,system-ui,sans-serif;background:radial-gradient(ellipse at 80% 0%,var(--glow),transparent 34%),radial-gradient(ellipse at 10% 85%,#6b5cff12,transparent 35%),#05070b;transition:background .5s}
-#noxApp[data-wall="violet"]{--accent:#b49cff;--glow:#8e66ff24}
-#noxApp[data-wall="ocean"]{--accent:#70e1ff;--glow:#1ca8ff24}
-#noxApp[data-wall="sunset"]{--accent:#ffb17a;--glow:#ff774424}
-#noxApp[data-wall="rose"]{--accent:#ff8dc5;--glow:#ff4b9b24}
-#noxApp[data-wall="gold"]{--accent:#e7c36d;--glow:#e7c36d22}
-.nx-shell{max-width:1380px;margin:auto;padding:24px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px}
-.nx-side{position:sticky;top:20px;height:calc(100vh - 40px);display:flex;flex-direction:column;border:1px solid #ffffff12;border-radius:26px;background:#0c1018d9;padding:20px;backdrop-filter:blur(22px)}
-.nx-logo{display:flex;align-items:center;gap:12px;margin-bottom:36px}.nx-emblem{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:var(--accent);color:#080b0e;font-size:20px;font-weight:900;box-shadow:0 0 35px var(--glow)}.nx-logo b{letter-spacing:2px;font-size:16px}.nx-logo small{display:block;color:#748094;font-size:9px;letter-spacing:1px}
-.nx-nav{display:grid;gap:8px}.nx-nav button{display:flex;align-items:center;gap:12px;padding:13px;border-radius:14px;background:transparent;color:#8b96a8;text-align:right;font-weight:700;font-size:12px;border:1px solid transparent}.nx-nav button.active,.nx-nav button:hover{background:#ffffff0b;border-color:#ffffff10;color:var(--accent)}.nx-nav span{font-size:18px;width:24px;text-align:center}
-.nx-sidefoot{margin-top:auto;border:1px solid #ffffff12;border-radius:18px;padding:14px;background:linear-gradient(140deg,#ffffff08,transparent)}.nx-sidefoot small{color:#7e899b;font-size:10px}.nx-sidefoot strong{display:block;font-size:13px;margin:7px 0}.nx-sidefoot p{color:#8c97a9;font-size:10px;line-height:1.7;margin:0}
-.nx-main{min-width:0}.nx-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px}.nx-kicker{font-size:10px;color:var(--accent);letter-spacing:2px;font-weight:900}.nx-title{font-size:clamp(25px,4vw,39px);font-weight:900;line-height:1.3;margin:7px 0}.nx-sub{font-size:12px;color:#8490a2}.nx-actions{display:flex;gap:9px;align-items:center}.nx-pill{border:1px solid #ffffff16;background:#0e131d;color:#b5becc;border-radius:14px;padding:10px 13px;font-size:11px}.nx-primary{background:var(--accent);color:#090d0c;border-radius:14px;padding:12px 16px;font-weight:900;font-size:12px}
-.nx-grid{display:grid;grid-template-columns:1.4fr .85fr;gap:14px}.nx-panel{border:1px solid #ffffff12;border-radius:24px;background:linear-gradient(145deg,#111722e8,#0b0f16f2);padding:20px;position:relative;overflow:hidden}.nx-panel h3{font-size:15px;margin:0}.nx-panelhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.nx-hero{min-height:235px;background:linear-gradient(110deg,#141b26ee,#10131bed),radial-gradient(circle at 85% 20%,var(--glow),transparent 50%)}.nx-hero:after{content:"✳";position:absolute;left:24px;bottom:-70px;font-size:220px;color:var(--accent);opacity:.045;pointer-events:none}.nx-hero .nx-big{font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.35;margin:10px 0}.nx-hero .nx-big em{font-style:normal;color:var(--accent)}.nx-hero p{font-size:12px;color:#929eaf;max-width:440px;line-height:1.9}.nx-herofoot{display:flex;align-items:center;gap:10px;margin-top:24px}.nx-track{height:6px;border-radius:20px;background:#ffffff10;flex:1;overflow:hidden}.nx-track i{display:block;height:100%;width:0;background:var(--accent);border-radius:20px;transition:width .4s}.nx-percent{font-size:11px;color:var(--accent);font-weight:900}
-.nx-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.nx-metric{padding:15px;border:1px solid #ffffff12;border-radius:20px;background:#0d121a}.nx-metric label{font-size:10px;color:#818da0}.nx-metric strong{display:block;font-size:25px;margin:5px 0}.nx-metric small{font-size:9px;color:var(--accent)}
-.nx-taskrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #ffffff0c}.nx-taskrow:last-child{border:0}.nx-tick{width:26px;height:26px;border:1px solid #ffffff2b;border-radius:9px;background:#ffffff05;color:var(--accent);flex-shrink:0}.nx-taskrow.done .nx-tick{background:var(--accent);color:#080b0e}.nx-taskrow.done .nx-taskname{text-decoration:line-through;opacity:.5}.nx-taskbody{flex:1;min-width:0}.nx-taskname{font-size:12px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nx-taskmeta{font-size:10px;color:#778397;margin-top:4px}.nx-timelabel{font-size:11px;color:var(--accent);direction:ltr}
-.nx-wallpapers{display:flex;gap:8px;flex-wrap:wrap}.nx-wall{width:35px;height:35px;border-radius:12px;border:2px solid transparent;background:#b7f36b;cursor:pointer}.nx-wall[data-v="violet"]{background:#b49cff}.nx-wall[data-v="ocean"]{background:#70e1ff}.nx-wall[data-v="sunset"]{background:#ffb17a}.nx-wall[data-v="rose"]{background:#ff8dc5}.nx-wall[data-v="gold"]{background:#e7c36d}.nx-wall.selected{border-color:white;box-shadow:0 0 0 3px #ffffff22}
-.nx-focus{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(110deg,#17201a,#10161b);border:1px solid #ffffff14;border-radius:20px;padding:17px;margin-top:14px}.nx-clock{font-size:27px;font-weight:900;color:var(--accent);direction:ltr}.nx-habit{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #ffffff0c}.nx-habit:last-child{border:0}.nx-habit input{accent-color:var(--accent);width:18px;height:18px}.nx-habit span{font-size:12px;flex:1}.nx-habit small{font-size:10px;color:var(--accent)}
-.nx-section{margin-top:14px}.nx-toast{position:fixed;top:20px;left:50%;transform:translate(-50%,-20px);opacity:0;background:var(--accent);color:#08100b;padding:12px 18px;border-radius:14px;font-weight:900;font-size:12px;z-index:100;transition:.25s;pointer-events:none}.nx-toast.on{opacity:1;transform:translate(-50%,0)}
-.nx-modal{position:fixed;inset:0;background:#020408d9;backdrop-filter:blur(15px);z-index:99;display:none;place-items:center;padding:18px}.nx-modal.on{display:grid}.nx-dialog{width:min(460px,100%);background:#101620;border:1px solid #ffffff1c;border-radius:26px;padding:24px}.nx-dialog h3{margin:0 0 16px}.nx-dialog input,.nx-dialog select{width:100%;padding:12px;border-radius:13px;background:#080c12;border:1px solid #ffffff1b;color:white;margin:7px 0 14px;font:inherit}.nx-dialog label{font-size:11px;color:#8894a7}
-@media(max-width:850px){.nx-shell{display:block;padding:14px}.nx-side{position:fixed;z-index:50;top:auto;bottom:0;left:0;right:0;height:auto;border-radius:20px 20px 0 0;padding:8px 12px calc(8px + env(safe-area-inset-bottom));display:block}.nx-logo,.nx-sidefoot{display:none}.nx-nav{display:flex;justify-content:space-around;gap:4px}.nx-nav button{flex:1;justify-content:center;padding:10px 5px;font-size:10px;display:flex;flex-direction:column;gap:3px}.nx-nav span{font-size:17px}.nx-main{padding-bottom:90px}.nx-grid{grid-template-columns:1fr}.nx-top{align-items:flex-start}.nx-actions{flex-wrap:wrap;justify-content:flex-end}.nx-pill{display:none}.nx-mini{gap:7px}.nx-metric{padding:12px}.nx-metric strong{font-size:21px}.nx-panel{padding:16px}.nx-hero{min-height:210px}.nx-title{font-size:28px}}
-</style>
-<div id="noxApp" data-wall="mint">
-<div class="nx-shell">
-<aside class="nx-side"><div class="nx-logo"><div class="nx-emblem">✳</div><div><b>DAYCORE</b><small>PERSONAL OPERATING SYSTEM</small></div></div><nav class="nx-nav"><button class="active" data-nav="home"><span>⌂</span>نظرة عامة</button><button data-nav="tasks"><span>◷</span>مهامي</button><button data-nav="habits"><span>✧</span>عاداتي</button><button data-nav="look"><span>◉</span>المظهر</button></nav><div class="nx-sidefoot"><small>DAILY SYSTEM STATUS</small><strong>النظام جاهز ✦</strong><p>رتّب أولوياتك، خُد نفس، وابدأ من خطوة واحدة.</p></div></aside>
-<main class="nx-main">
-<header class="nx-top"><div><div class="nx-kicker">YOUR PERSONAL SPACE / 01</div><h1 class="nx-title">صباحك تحت سيطرتك<span style="color:var(--accent)">.</span></h1><div class="nx-sub" id="nxDate">نظامك الشخصي — مساحة هادئة للإنجاز</div></div><div class="nx-actions"><button class="nx-pill" id="nxStyleBtn">✦ غيّر الجو</button><button class="nx-primary" id="nxAdd">＋ إضافة مهمة</button></div></header>
-<section class="nx-grid">
-<div>
-<div class="nx-panel nx-hero"><div class="nx-kicker">TODAY'S CONTROL ROOM</div><div class="nx-big">مش لازم تغيّر حياتك<br>كلها النهارده.<br><em>غيّر الساعة الجاية.</em></div><p id="nxQuote">اختار حاجة واحدة مهمة، واديها تركيزك الحقيقي.</p><div class="nx-herofoot"><div class="nx-track"><i id="nxProgress"></i></div><span class="nx-percent" id="nxPct">0%</span></div></div>
-<div class="nx-mini"><div class="nx-metric"><label>المهام المكتملة</label><strong id="nxDone">0/0</strong><small>خطوة ورا خطوة</small></div><div class="nx-metric"><label>عادات اليوم</label><strong id="nxHabitDone">0/0</strong><small>ثبات يومي</small></div><div class="nx-metric"><label>وقت التركيز</label><strong id="nxFocusMin">0</strong><small>دقيقة مستثمرة</small></div></div>
-<div class="nx-panel nx-section" id="nxTaskPanel"><div class="nx-panelhead"><h3>▸ خطة اليوم</h3><button class="nx-pill" id="nxAdd2">إضافة +</button></div><div id="nxTasks"></div><div class="nx-focus"><div><div class="nx-kicker">FOCUS SESSION</div><div style="font-size:12px;font-weight:800;margin:5px 0">جلسة 25 دقيقة</div><div class="nx-sub">ابعد المشتتات وابدأ.</div></div><div class="nx-clock" id="nxClock">25:00</div><button class="nx-primary" id="nxFocusStart">ابدأ</button></div></div>
-</div>
-<div>
-<div class="nx-panel"><div class="nx-panelhead"><h3>✧ عاداتك</h3><button class="nx-pill" id="nxAddHabit">＋ عادة</button></div><div id="nxHabits"></div><p class="nx-sub" style="line-height:1.8;margin:12px 0 0">الاستمرارية مش إنك متغلطش؛ الاستمرارية إنك ترجع.</p></div>
-<div class="nx-panel nx-section" id="nxLookPanel"><div class="nx-panelhead"><h3>◉ ستايل المساحة</h3><span class="nx-sub">غيّر لون النظام</span></div><div class="nx-wallpapers"><button class="nx-wall selected" data-v="mint" title="Mint"></button><button class="nx-wall" data-v="violet" title="Violet"></button><button class="nx-wall" data-v="ocean" title="Ocean"></button><button class="nx-wall" data-v="sunset" title="Sunset"></button><button class="nx-wall" data-v="rose" title="Rose"></button><button class="nx-wall" data-v="gold" title="Gold"></button></div><p class="nx-sub" style="line-height:1.8">اختار لونك المفضل. الخلفية والإضاءة بتتغير معاه.</p></div>
-<div class="nx-panel nx-section"><div class="nx-panelhead"><h3>◈ مفاجأة اليوم</h3><button class="nx-pill" id="nxSurprise">افتحها</button></div><p id="nxSurpriseText" class="nx-sub" style="line-height:2">فيه رسالة مخفية مستنياك…</p></div>
-</div></section>
-</main></div><div class="nx-toast" id="nxToast"></div>
-<div class="nx-modal" id="nxModal"><div class="nx-dialog"><h3 id="nxModalTitle">إضافة مهمة جديدة</h3><form id="nxForm"><label>اسم المهمة</label><input id="nxName" required maxlength="90" placeholder="مثلاً: حل مسائل الرياضة"><div id="nxTaskFields"><label>موعدها</label><input id="nxTime" type="time" value="16:00"><label>المدة بالدقائق</label><input id="nxDuration" type="number" min="5" max="360" value="45"></div><div style="display:flex;gap:8px"><button class="nx-primary" type="submit" style="flex:1">حفظ</button><button class="nx-pill" type="button" id="nxCancel">إلغاء</button></div></form></div></div>
-</div>
-<script>
-(()=>{const app=document.getElementById('noxApp'),$=id=>document.getElementById(id);let theme=localStorage.getItem('daycore_theme')||'mint';app.dataset.wall=theme;document.querySelectorAll('.nx-wall').forEach(b=>{b.classList.toggle('selected',b.dataset.v===theme);b.onclick=()=>{theme=b.dataset.v;app.dataset.wall=theme;localStorage.setItem('daycore_theme',theme);document.querySelectorAll('.nx-wall').forEach(x=>x.classList.toggle('selected',x===b));say('تم تغيير أجواء DAYCORE ✦')}});const today=new Date();$('nxDate').textContent=today.toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long',year:'numeric'});function say(t){$('nxToast').textContent=t;$('nxToast').classList.add('on');setTimeout(()=>$('nxToast').classList.remove('on'),2100)}function safe(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}function refresh(){if(typeof data==='undefined')return;let tasks=data.tasks||[],habits=data.habits||[],done=tasks.filter(t=>t.done).length,hd=habits.filter(h=>(h.days||[]).includes(dateKey())).length,total=tasks.length+habits.length,p=total?Math.round((done+hd)/total*100):0;$('nxDone').textContent=done+'/'+tasks.length;$('nxHabitDone').textContent=hd+'/'+habits.length;$('nxFocusMin').textContent=data.focusMinutes||0;$('nxProgress').style.width=p+'%';$('nxPct').textContent=p+'%';$('nxTasks').innerHTML=tasks.length?tasks.slice().sort((a,b)=>a.time.localeCompare(b.time)).map(t=>'<div class="nx-taskrow '+(t.done?'done':'')+'"><button class="nx-tick" data-tick="'+t.id+'">'+(t.done?'✓':'')+'</button><div class="nx-taskbody"><div class="nx-taskname">'+safe(t.name)+'</div><div class="nx-taskmeta">'+t.duration+' دقيقة</div></div><span class="nx-timelabel">'+safe(t.time)+'</span></div>').join(''):'<p class="nx-sub">ابدأ بإضافة أول مهمة ليومك.</p>';$('nxHabits').innerHTML=habits.length?habits.map(h=>'<label class="nx-habit"><input type="checkbox" data-habit="'+h.id+'" '+((h.days||[]).includes(dateKey())?'checked':'')+'><span>'+safe(h.name)+'</span><small>🔥 '+(h.streak||0)+'</small></label>').join(''):'<p class="nx-sub">ضيف عادة صغيرة تحب تثبت عليها.</p>';document.querySelectorAll('[data-tick]').forEach(b=>b.onclick=()=>{let t=data.tasks.find(x=>x.id===b.dataset.tick);if(t){t.done=!t.done;save();render();refresh()}});document.querySelectorAll('[data-habit]').forEach(b=>b.onchange=()=>{let h=data.habits.find(x=>x.id===b.dataset.habit);if(h){let k=dateKey();if(b.checked){if(!h.days.includes(k)){h.days.push(k);h.streak=(h.streak||0)+1}}else h.days=h.days.filter(x=>x!==k);save();render();refresh()}})}function add(type){$('nxModalTitle').textContent=type==='task'?'مهمة جديدة':'عادة جديدة';$('nxTaskFields').style.display=type==='task'?'block':'none';$('nxForm').dataset.type=type;$('nxName').value='';$('nxModal').classList.add('on')} $('nxAdd').onclick=$('nxAdd2').onclick=()=>add('task');$('nxAddHabit').onclick=()=>add('habit');$('nxCancel').onclick=()=>$('nxModal').classList.remove('on');$('nxForm').onsubmit=e=>{e.preventDefault();let name=$('nxName').value.trim();if(!name)return;if(e.currentTarget.dataset.type==='task')data.tasks.push({id:id(),name,time:$('nxTime').value||'16:00',duration:+$('nxDuration').value||45,reminder:5,done:false});else data.habits.push({id:id(),name,streak:0,days:[]});save();render();refresh();$('nxModal').classList.remove('on');say('اتضافت بنجاح ✦')};$('nxFocusStart').onclick=()=>{document.getElementById('startFocus').click();say('وضع التركيز بدأ. شد حيلك!')};$('nxStyleBtn').onclick=()=>$('nxLookPanel').scrollIntoView({behavior:'smooth'});$('nxSurprise').onclick=()=>{let notes=['النسخة اللي نفسك تبقى عليها بتتكوّن من اختيارات صغيرة محدش شايفها.','خد دقيقة: اكتب أهم حاجة واحدة، وابدأ فيها قبل أي حاجة تانية.','مش مطلوب منك تكون خارق؛ مطلوب منك تكون حاضر في خطوتك الحالية.','اقفل إشعار واحد مشتتك دلوقتي. دي أول ترقية لنظامك.','خلي عندك فخر إنك بتحاول، مش بس لما تخلص.'];$('nxSurpriseText').textContent=notes[Math.floor(Math.random()*notes.length)];say('تم فتح رسالة اليوم ✨')};document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-nav]').forEach(x=>x.classList.toggle('active',x===b));let dest=b.dataset.nav==='tasks'?'nxTaskPanel':b.dataset.nav==='habits'?'nxHabits':b.dataset.nav==='look'?'nxLookPanel':'nxApp';$(dest).scrollIntoView({behavior:'smooth',block:'center'})});setInterval(()=>{if(typeof data!=='undefined')refresh()},1500);refresh()})();
-</script>
-</body></html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#09090b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>DAYCORE | نظام حياتك الشخصي</title>
+
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-base: #09090b;
+            --bg-surface: rgba(20, 20, 25, 0.78);
+            --bg-elevated: rgba(30, 30, 38, 0.85);
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --accent-rgb: 245, 158, 11;
+            --accent-glow: rgba(245, 158, 11, 0.28);
+            --accent-soft: rgba(245, 158, 11, 0.12);
+            --border-subtle: rgba(255, 255, 255, 0.065);
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --font-ui: 'Cairo', sans-serif;
+        }
+
+        /* Luxury Color Themes */
+        [data-theme="royal-gold"] {
+            --accent: #f59e0b;
+            --accent-light: #fcd34d;
+            --accent-rgb: 245, 158, 11;
+            --accent-glow: rgba(245, 158, 11, 0.28);
+            --accent-soft: rgba(245, 158, 11, 0.12);
+        }
+        [data-theme="sapphire-blue"] {
+            --accent: #3b82f6;
+            --accent-light: #60a5fa;
+            --accent-rgb: 59, 130, 246;
+            --accent-glow: rgba(59, 130, 246, 0.28);
+            --accent-soft: rgba(59, 130, 246, 0.13);
+        }
+        [data-theme="emerald-mint"] {
+            --accent: #10b981;
+            --accent-light: #34d399;
+            --accent-rgb: 16, 185, 129;
+            --accent-glow: rgba(16, 185, 129, 0.28);
+            --accent-soft: rgba(16, 185, 129, 0.13);
+        }
+        [data-theme="amethyst-purple"] {
+            --accent: #a855f7;
+            --accent-light: #c084fc;
+            --accent-rgb: 168, 85, 247;
+            --accent-glow: rgba(168, 85, 247, 0.28);
+            --accent-soft: rgba(168, 85, 247, 0.13);
+        }
+        [data-theme="rose-crimson"] {
+            --accent: #f43f5e;
+            --accent-light: #fb7185;
+            --accent-rgb: 244, 63, 94;
+            --accent-glow: rgba(244, 63, 94, 0.28);
+            --accent-soft: rgba(244, 63, 94, 0.13);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Luxury Obsidian Cards */
+        .lux-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.65);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .lux-card:hover {
+            border-color: rgba(var(--accent-rgb), 0.25);
+        }
+
+        .lux-card-gold {
+            background: linear-gradient(155deg, rgba(var(--accent-rgb), 0.13) 0%, rgba(20, 20, 26, 0.88) 65%);
+            border: 1px solid rgba(var(--accent-rgb), 0.32);
+            box-shadow: 0 16px 40px -12px var(--accent-glow);
+        }
+
+        /* Buttons */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #09090b;
+            font-weight: 800;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px -4px var(--accent-glow);
+            transition: all 0.22s ease;
+        }
+        .btn-gold:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06);
+        }
+        .btn-gold:active {
+            transform: scale(0.97);
+        }
+
+        .btn-soft {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            border-radius: 16px;
+            transition: all 0.2s ease;
+        }
+        .btn-soft:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(var(--accent-rgb), 0.35);
+        }
+
+        .lux-input {
+            background: rgba(12, 12, 16, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: var(--text-primary);
+            border-radius: 16px;
+            padding: 0.75rem 1rem;
+            outline: none;
+            width: 100%;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .lux-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .text-accent { color: var(--accent); }
+        .bg-accent-soft { background-color: var(--accent-soft); }
+        .border-accent { border-color: var(--accent); }
+
+        /* Smooth View Transition */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-view {
+            animation: fadeSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Ambient Background Canvas & Custom Wallpaper */
+        #ambient-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        #custom-wallpaper-img {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+            opacity: 0.28;
+            pointer-events: none;
+        }
+        #ambient-radial-glow {
+            position: fixed;
+            top: -15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90vw;
+            height: 55vh;
+            background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            transition: background 0.5s ease;
+        }
+
+        /* Progress Ring */
+        .ring-circle {
+            transition: stroke-dashoffset 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Hide Scrollbar cleanly */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Floating Bottom Dock */
+        .bottom-dock {
+            padding-bottom: max(10px, env(safe-area-inset-bottom));
+        }
+    </style>
+</head>
+<body data-theme="royal-gold">
+
+    <!-- Background Layers -->
+    <img id="custom-wallpaper-img" src="" alt="" class="hidden">
+    <canvas id="ambient-canvas"></canvas>
+    <div id="ambient-radial-glow"></div>
+    <canvas id="celebration-canvas" class="fixed inset-0 pointer-events-none z-[9990]"></canvas>
+
+    <!-- ==================== LUXURY SPLASH SCREEN ==================== -->
+    <div id="splash-screen" class="fixed inset-0 z-[9999] bg-[#09090b] flex flex-col items-center justify-center p-6 transition-opacity duration-700">
+        <div class="relative mb-6">
+            <div class="absolute inset-0 rounded-full bg-amber-500/25 blur-2xl animate-pulse"></div>
+            <div class="w-24 h-24 rounded-full bg-gradient-to-b from-amber-500/20 to-black border border-amber-400/40 flex items-center justify-center shadow-[0_0_50px_rgba(245,158,11,0.35)] relative">
+                <i data-lucide="crown" class="w-11 h-11 text-amber-400"></i>
+            </div>
+        </div>
+        <h1 class="text-3xl font-black tracking-[0.22em] text-white mb-2">DAYCORE</h1>
+        <p class="text-amber-400/90 text-xs font-bold mb-6">نظّم حياتك.. حقق أهدافك</p>
+        <p id="splash-user-text" class="text-zinc-400 text-sm mb-6">النجاح يبدأ من قرار، وقرارك يبدأ من هنا</p>
+        <div class="w-48 h-1 bg-zinc-800 rounded-full overflow-hidden">
+            <div id="splash-progress" class="h-full bg-gradient-to-r from-amber-500 to-yellow-300 w-0 transition-all duration-700"></div>
+        </div>
+    </div>
+
+    <!-- ==================== FULLSCREEN ZEN FOCUS MODE ==================== -->
+    <div id="zen-focus-modal" class="fixed inset-0 z-[100] bg-[#09090b]/95 backdrop-blur-3xl hidden flex-col items-center justify-between p-6 md:p-10">
+        <div class="w-full max-w-2xl flex items-center justify-between">
+            <span class="text-xs font-bold text-accent flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                جلسة تركيز عميق
+            </span>
+            <button onclick="closeZenFocus()" class="btn-soft px-4 py-2 text-xs font-bold flex items-center gap-1.5">
+                <i data-lucide="minimize-2" class="w-4 h-4"></i>
+                <span>تصغير</span>
+            </button>
+        </div>
+
+        <div class="text-center my-auto">
+            <div id="zen-target-badge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-soft text-accent text-xs font-bold mb-8">
+                <i data-lucide="target" class="w-3.5 h-3.5"></i>
+                <span>تركيز عام</span>
+            </div>
+
+            <div class="relative w-64 h-64 sm:w-72 sm:h-72 mx-auto flex items-center justify-center mb-8">
+                <svg class="w-full h-full drop-shadow-[0_0_30px_var(--accent-glow)]" viewBox="0 0 220 220">
+                    <circle cx="110" cy="110" r="98" stroke="rgba(255,255,255,0.06)" stroke-width="6" fill="none"/>
+                    <circle id="zen-ring" class="ring-circle" cx="110" cy="110" r="98" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="615.75" stroke-dashoffset="0"/>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span id="zen-time-text" class="text-5xl sm:text-6xl font-black text-white tracking-wider">25:00</span>
+                    <span class="text-xs text-zinc-400 mt-2">دقيقة متبقية</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-3">
+                <button onclick="toggleTimer()" id="zen-play-btn" class="btn-gold px-8 py-3.5 text-sm flex items-center gap-2">
+                    <i data-lucide="play" class="w-5 h-5"></i>
+                    <span>بدء / إيقاف</span>
+                </button>
+                <button onclick="finishTimerSession()" class="btn-soft px-5 py-3.5 text-xs font-bold text-emerald-400">
+                    إنهاء واحتساب ✓
+                </button>
+            </div>
+        </div>
+
+        <p class="text-zinc-500 text-xs text-center max-w-md">"ركّز على هدف واحد فقط.. فالتركيز يصنع المعجزات."</p>
+    </div>
+
+    <!-- ==================== MAIN APP CONTAINER (CENTERED MOBILE-FIRST SHELL) ==================== -->
+    <div class="max-w-3xl mx-auto min-h-screen flex flex-col pb-28">
+
+        <!-- Clean Luxury Top Header -->
+        <header class="sticky top-0 z-20 bg-[#09090b]/80 backdrop-blur-2xl border-b border-white/[0.05] px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            <div onclick="switchTab('settings')" class="flex items-center gap-3 cursor-pointer">
+                <div id="top-avatar" class="w-10 h-10 rounded-full bg-accent-soft border border-accent/40 flex items-center justify-center text-lg overflow-hidden shrink-0 shadow-[0_0_15px_var(--accent-glow)]">
+                    👑
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black text-accent" id="top-level-pill">Level 1</span>
+                        <span class="text-[11px] text-zinc-500">•</span>
+                        <span class="text-[11px] text-zinc-400 font-semibold" id="top-xp-text">120 XP</span>
+                    </div>
+                    <div class="w-24 h-1 bg-zinc-800 rounded-full overflow-hidden mt-1">
+                        <div id="top-xp-bar" class="h-full bg-accent transition-all duration-500" style="width: 24%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Brand Crown -->
+            <div class="hidden sm:flex items-center gap-2">
+                <i data-lucide="crown" class="w-5 h-5 text-accent"></i>
+                <span class="font-black tracking-[0.18em] text-sm text-white">DAYCORE</span>
+            </div>
+
+            <!-- Right Streak & Quick Actions -->
+            <div class="flex items-center gap-2">
+                <div class="px-3 py-1.5 rounded-full bg-zinc-900/90 border border-white/[0.06] flex items-center gap-1.5 text-xs font-bold">
+                    <span id="top-streak-count" class="text-white">5</span>
+                    <span>🔥</span>
+                </div>
+                <button onclick="triggerSurprise()" title="مفاجأة اليوم" class="w-9 h-9 rounded-full bg-zinc-900/90 border border-white/[0.06] flex items-center justify-center text-accent hover:border-accent/40 transition-colors">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </button>
+                <button onclick="switchTab('settings')" class="w-9 h-9 rounded-full bg-zinc-900/90 border border-white/[0.06] flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+                    <i data-lucide="settings" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ==================== VIEWS CONTAINER ==================== -->
+        <main class="flex-1 px-4 sm:px-6 pt-5 space-y-5">
+
+            <!-- ==================== TAB 1: HOME DASHBOARD ==================== -->
+            <section id="tab-home" class="tab-view space-y-5 animate-view">
+
+                <!-- Greeting & Live Clock Hero Card (Inspired by Reference Image 1 & 2) -->
+                <div class="lux-card lux-card-gold p-5 sm:p-6 relative overflow-hidden">
+                    <div class="flex items-center justify-between gap-4">
+                        <div class="space-y-1.5">
+                            <h2 id="home-greeting" class="text-xl sm:text-2xl font-black text-white">صباح الخير يا بطل 👋</h2>
+                            <p id="home-subgreeting" class="text-xs sm:text-sm text-zinc-300">يوم جديد.. فرصة جديدة لتكون أفضل</p>
+                            <div class="pt-2 flex flex-wrap items-center gap-2">
+                                <span id="home-date-pill" class="text-[11px] px-3 py-1 rounded-full bg-black/40 text-zinc-300 border border-white/[0.06]">...</span>
+                                <span id="home-day-status" class="text-[11px] px-3 py-1 rounded-full bg-accent-soft text-accent font-bold">حالة اليوم: ممتاز</span>
+                            </div>
+                        </div>
+
+                        <!-- Circular Clock & Completion Ring -->
+                        <div class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 flex items-center justify-center">
+                            <svg class="w-full h-full drop-shadow-[0_0_18px_var(--accent-glow)]" viewBox="0 0 110 110">
+                                <circle cx="55" cy="55" r="48" stroke="rgba(255,255,255,0.08)" stroke-width="5" fill="rgba(9,9,11,0.65)"/>
+                                <circle id="home-clock-ring" class="ring-circle" cx="55" cy="55" r="48" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" fill="none" stroke-dasharray="301.6" stroke-dashoffset="75"/>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                                <span id="home-live-time" class="text-base sm:text-lg font-black text-white leading-none">07:10</span>
+                                <span id="home-completion-pct" class="text-[11px] font-bold text-accent mt-1">0% إنجاز</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Quote Strip -->
+                    <div class="mt-4 pt-3.5 border-t border-white/[0.07] flex items-center justify-between gap-2">
+                        <p id="home-quote" class="text-xs text-zinc-300 italic">"ركّز على هدف واحد فقط.. فالتركيز يصنع المعجزات."</p>
+                        <button onclick="rotateQuote()" class="text-zinc-400 hover:text-accent p-1 shrink-0" title="تغيير الحكمة">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Priority Spotlight (أهم هدف اليوم) -->
+                <div class="lux-card p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-extrabold text-accent flex items-center gap-1.5">
+                            <i data-lucide="crown" class="w-4 h-4"></i>
+                            <span>أهم هدف اليوم</span>
+                        </span>
+                        <button onclick="openAddTaskModal(true)" class="text-xs text-zinc-400 hover:text-accent font-semibold">+ تحديد هدف</button>
+                    </div>
+                    <div id="home-mit-container"></div>
+                </div>
+
+                <!-- Circular Glowing Daily Habits Row (Inspired by Reference Image 1 - عاداتي اليومية) -->
+                <div class="lux-card p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                            <span>عاداتي اليومية</span>
+                            <span id="home-habits-badge" class="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-zinc-400 font-normal">0/0</span>
+                        </h3>
+                        <button onclick="openAddHabitModal()" class="text-xs text-accent font-bold hover:underline">+ عادة</button>
+                    </div>
+                    <div id="home-habits-circles" class="flex items-center gap-4 overflow-x-auto no-scrollbar pb-1"></div>
+                </div>
+
+                <!-- Smart Local Suggestion Card -->
+                <div class="lux-card p-4 flex items-center justify-between gap-3 bg-zinc-900/60">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-10 h-10 rounded-2xl bg-accent-soft text-accent flex items-center justify-center shrink-0">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <div class="text-[11px] font-bold text-accent">اقتراح ذكي للآن</div>
+                            <p id="home-smart-tip" class="text-xs text-zinc-200 truncate mt-0.5">جاري تحليل جدولك...</p>
+                        </div>
+                    </div>
+                    <button id="home-smart-btn" onclick="runSmartAction()" class="btn-gold px-4 py-2 text-xs shrink-0">ابدأ</button>
+                </div>
+
+                <!-- Today's Clean Checklist (مهامي اليوم) -->
+                <div class="lux-card p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                            <span>مهامي اليوم</span>
+                            <span id="home-overdue-pill" class="hidden text-[10px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-400 font-bold">متأخرة</span>
+                        </h3>
+                        <button onclick="openAddTaskModal(false)" class="btn-gold px-3.5 py-1.5 text-xs flex items-center gap-1">
+                            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                            <span>إضافة مهمة</span>
+                        </button>
+                    </div>
+                    <div id="home-tasks-list" class="space-y-2.5"></div>
+                    <button onclick="switchTab('plan')" class="w-full mt-4 py-2.5 rounded-2xl btn-soft text-xs font-bold text-zinc-300">
+                        عرض كل المهام وجدول المذاكرة ←
+                    </button>
+                </div>
+            </section>
+
+            <!-- ==================== TAB 2: TASKS, STUDY & SLEEP ==================== -->
+            <section id="tab-plan" class="tab-view hidden space-y-5 animate-view">
+                <!-- Segmented Switcher -->
+                <div class="p-1.5 rounded-2xl bg-zinc-900/90 border border-white/[0.06] grid grid-cols-3 gap-1">
+                    <button onclick="switchPlanSub('tasks')" id="sub-btn-tasks" class="py-2.5 rounded-xl text-xs font-extrabold bg-accent-soft text-accent transition-all">المهام والجدول</button>
+                    <button onclick="switchPlanSub('study')" id="sub-btn-study" class="py-2.5 rounded-xl text-xs font-extrabold text-zinc-400 hover:text-white transition-all">نظام المذاكرة</button>
+                    <button onclick="switchPlanSub('sleep')" id="sub-btn-sleep" class="py-2.5 rounded-xl text-xs font-extrabold text-zinc-400 hover:text-white transition-all">النوم والطاقة</button>
+                </div>
+
+                <!-- SUB-VIEW A: TASKS -->
+                <div id="plan-sub-tasks" class="space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+                            <button onclick="setTaskFilter('all')" class="t-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-accent-soft text-accent" data-f="all">الكل</button>
+                            <button onclick="setTaskFilter('pending')" class="t-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold btn-soft text-zinc-400" data-f="pending">قيد التنفيذ</button>
+                            <button onclick="setTaskFilter('overdue')" class="t-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold btn-soft text-zinc-400" data-f="overdue">متأخرة</button>
+                            <button onclick="setTaskFilter('completed')" class="t-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold btn-soft text-zinc-400" data-f="completed">مكتملة</button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="smartRescheduleRemaining()" class="btn-soft px-3 py-2 text-xs font-bold text-accent flex items-center gap-1.5">
+                                <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+                                <span>إعادة ترتيب اليوم</span>
+                            </button>
+                            <button onclick="openAddTaskModal(false)" class="btn-gold px-4 py-2 text-xs">+ مهمة</button>
+                        </div>
+                    </div>
+
+                    <div id="plan-tasks-container" class="space-y-3"></div>
+                </div>
+
+                <!-- SUB-VIEW B: HIGH SCHOOL STUDY OS -->
+                <div id="plan-sub-study" class="hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-base font-black text-white">المواد الدراسية والامتحانات</h3>
+                            <p id="study-balance-note" class="text-xs text-zinc-400 mt-0.5">تابع ساعات مذاكرتك والدروس المتبقية</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="openAddExamModal()" class="btn-soft px-3 py-2 text-xs font-bold">+ امتحان</button>
+                            <button onclick="openAddSubjectModal()" class="btn-gold px-3.5 py-2 text-xs">+ مادة</button>
+                        </div>
+                    </div>
+
+                    <!-- Exam Countdowns -->
+                    <div id="study-exams-row" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+
+                    <!-- Subjects List -->
+                    <div id="study-subjects-list" class="space-y-3"></div>
+
+                    <!-- Tutoring / Center Schedule -->
+                    <div class="lux-card p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-sm font-extrabold text-white">مواعيد الدروس والسناتر</h4>
+                            <button onclick="openAddClassModal()" class="text-xs text-accent font-bold">+ موعد</button>
+                        </div>
+                        <div id="study-classes-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5"></div>
+                    </div>
+                </div>
+
+                <!-- SUB-VIEW C: SLEEP & ENERGY -->
+                <div id="plan-sub-sleep" class="hidden space-y-4">
+                    <div class="lux-card p-5 space-y-4">
+                        <h3 class="text-base font-black text-white flex items-center gap-2">
+                            <i data-lucide="moon" class="w-4 h-4 text-accent"></i>
+                            <span>تنظيم النوم وساعات النشاط</span>
+                        </h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-xs text-zinc-400 block mb-1">وقت الاستيقاظ</label>
+                                <input type="time" id="inp-wake-time" onchange="saveSleepPrefs()" class="lux-input text-sm">
+                            </div>
+                            <div>
+                                <label class="text-xs text-zinc-400 block mb-1">وقت النوم المستهدف</label>
+                                <input type="time" id="inp-bed-time" onchange="saveSleepPrefs()" class="lux-input text-sm">
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="number" id="inp-sleep-hours" step="0.5" min="2" max="15" placeholder="ساعات نومك الليلة الماضية (مثلاً 7.5)" class="lux-input text-xs">
+                            <button onclick="logSleepEntry()" class="btn-gold px-5 py-2.5 text-xs shrink-0">تسجيل</button>
+                        </div>
+                        <div id="sleep-energy-guide" class="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-xs text-zinc-300 space-y-2 leading-relaxed"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== TAB 3: LUXURY FOCUS TIMER ==================== -->
+            <section id="tab-focus" class="tab-view hidden space-y-5 animate-view">
+                <div class="lux-card lux-card-gold p-6 sm:p-8 text-center flex flex-col items-center">
+                    <div class="w-full flex items-center justify-between mb-4">
+                        <span class="text-xs font-bold text-accent">مؤقت التركيز</span>
+                        <button onclick="openZenFocus()" class="btn-soft px-3 py-1.5 text-xs font-bold flex items-center gap-1.5">
+                            <i data-lucide="maximize-2" class="w-3.5 h-3.5 text-accent"></i>
+                            <span>وضع ملء الشاشة</span>
+                        </button>
+                    </div>
+
+                    <p class="text-xs text-zinc-400 mb-6">ركّز.. أنت على الطريق الصحيح</p>
+
+                    <!-- Presets Pills -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+                        <button onclick="setFocusPreset(25, 'focus')" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-accent-soft text-accent border border-accent/30">25 دقيقة</button>
+                        <button onclick="setFocusPreset(45, 'focus')" class="px-3.5 py-1.5 rounded-full text-xs font-bold btn-soft">45 دقيقة</button>
+                        <button onclick="setFocusPreset(50, 'focus')" class="px-3.5 py-1.5 rounded-full text-xs font-bold btn-soft">50 دقيقة</button>
+                        <button onclick="setFocusPreset(5, 'break')" class="px-3.5 py-1.5 rounded-full text-xs font-bold btn-soft text-emerald-400">5د راحة</button>
+                    </div>
+
+                    <!-- Large Golden Circular Timer (Matches Reference Image 1) -->
+                    <div class="relative w-60 h-60 sm:w-68 sm:h-68 flex items-center justify-center my-2">
+                        <svg class="w-full h-full drop-shadow-[0_0_28px_var(--accent-glow)]" viewBox="0 0 220 220">
+                            <circle cx="110" cy="110" r="98" stroke="rgba(255,255,255,0.06)" stroke-width="6" fill="rgba(9,9,11,0.6)"/>
+                            <circle id="focus-main-ring" class="ring-circle" cx="110" cy="110" r="98" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="615.75" stroke-dashoffset="0"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span id="focus-main-time" class="text-5xl font-black text-white tracking-wider">25:00</span>
+                            <span id="focus-main-label" class="text-xs text-zinc-400 mt-1.5">دقيقة</span>
+                        </div>
+                    </div>
+
+                    <!-- Circular Golden Play Button + Controls -->
+                    <div class="flex items-center justify-center gap-4 mt-6">
+                        <button onclick="resetTimer()" title="إعادة" class="w-12 h-12 rounded-full btn-soft flex items-center justify-center text-zinc-300">
+                            <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
+                        </button>
+                        <button onclick="toggleTimer()" id="focus-main-play" class="w-16 h-16 rounded-full btn-gold flex items-center justify-center shadow-[0_0_30px_var(--accent-glow)]">
+                            <i data-lucide="play" class="w-7 h-7 fill-current"></i>
+                        </button>
+                        <button onclick="finishTimerSession()" title="احتساب الجلسة الآن" class="w-12 h-12 rounded-full btn-soft flex items-center justify-center text-emerald-400">
+                            <i data-lucide="check" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+
+                    <!-- Link to Task / Subject & Custom Minutes -->
+                    <div class="w-full max-w-md grid grid-cols-1 sm:grid-cols-2 gap-3 mt-7 pt-5 border-t border-white/[0.06] text-right">
+                        <div>
+                            <label class="text-[11px] text-zinc-400 block mb-1">اختر المهمة أو المادة</label>
+                            <select id="focus-link-select" onchange="syncFocusTarget()" class="lux-input text-xs py-2.5">
+                                <option value="general">تركيز عام</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[11px] text-zinc-400 block mb-1">مدة مخصصة (دقيقة)</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="focus-custom-input" min="1" max="180" placeholder="30" class="lux-input text-xs py-2.5">
+                                <button onclick="applyCustomFocus()" class="btn-soft px-4 text-xs font-bold">ضبط</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Offline Ambient Sound Toggle -->
+                    <div class="flex items-center justify-center gap-2 mt-4">
+                        <button onclick="toggleAmbientAudio('none')" data-snd="none" class="snd-pill px-3 py-1 rounded-full text-[11px] bg-accent-soft text-accent font-bold">بدون صوت</button>
+                        <button onclick="toggleAmbientAudio('rain')" data-snd="rain" class="snd-pill px-3 py-1 rounded-full text-[11px] btn-soft text-zinc-400">🌧️ مطر هادئ</button>
+                        <button onclick="toggleAmbientAudio('alpha')" data-snd="alpha" class="snd-pill px-3 py-1 rounded-full text-[11px] btn-soft text-zinc-400">🧠 موجات تركيز</button>
+                    </div>
+                </div>
+
+                <!-- Recent Focus Sessions -->
+                <div class="lux-card p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-extrabold text-white">سجل جلسات التركيز</h3>
+                        <span id="focus-total-today-badge" class="text-xs font-bold text-accent">0 دقيقة اليوم</span>
+                    </div>
+                    <div id="focus-history-list" class="space-y-2"></div>
+                </div>
+            </section>
+
+            <!-- ==================== TAB 4: INSIGHTS & ANALYTICS (Inspired by Reference Image 2 & 4) ==================== -->
+            <section id="tab-insights" class="tab-view hidden space-y-5 animate-view">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-black text-white">إحصائياتي وتطوري</h2>
+                    <button onclick="showDaySummaryModal()" class="btn-soft px-3.5 py-2 text-xs font-bold text-accent">تقرير اليوم ✨</button>
+                </div>
+
+                <!-- Top 3 Metric Cards (Like Reference Image 2) -->
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="lux-card p-4 text-center">
+                        <div class="text-[11px] text-zinc-400 mb-1">نقاط التركيز</div>
+                        <div id="ins-focus-score" class="text-xl sm:text-2xl font-black text-white">0</div>
+                        <div class="text-[10px] text-accent mt-0.5">دقيقة اليوم</div>
+                    </div>
+                    <div class="lux-card p-4 text-center">
+                        <div class="text-[11px] text-zinc-400 mb-1">المستوى</div>
+                        <div id="ins-level-val" class="text-xl sm:text-2xl font-black text-accent">Lvl 1</div>
+                        <div id="ins-xp-val" class="text-[10px] text-zinc-400 mt-0.5">120 XP</div>
+                    </div>
+                    <div class="lux-card p-4 text-center">
+                        <div class="text-[11px] text-zinc-400 mb-1">الالتزام</div>
+                        <div id="ins-streak-val" class="text-xl sm:text-2xl font-black text-white">5 أيام</div>
+                        <div class="text-[10px] text-emerald-400 mt-0.5">متتالية 🔥</div>
+                    </div>
+                </div>
+
+                <!-- Circular Completion + Weekly Bar Chart Side by Side (Directly from Reference Image 1 & 2) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Left: Circular Ring + Time Saved -->
+                    <div class="lux-card p-5 flex flex-col items-center justify-between">
+                        <div class="w-full flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-zinc-300">نسبة الإنجاز</span>
+                            <span class="text-[11px] text-accent font-bold">هذا الأسبوع</span>
+                        </div>
+                        <div class="relative w-36 h-36 my-2 flex items-center justify-center">
+                            <svg class="w-full h-full drop-shadow-[0_0_20px_var(--accent-glow)]" viewBox="0 0 140 140">
+                                <circle cx="70" cy="70" r="58" stroke="rgba(255,255,255,0.07)" stroke-width="10" fill="none"/>
+                                <circle id="ins-main-ring" class="ring-circle" cx="70" cy="70" r="58" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" fill="none" stroke-dasharray="364.4" stroke-dashoffset="50"/>
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span id="ins-ring-pct" class="text-2xl font-black text-white">85%</span>
+                                <span class="text-[10px] text-zinc-400">ممتاز</span>
+                            </div>
+                        </div>
+                        <div class="w-full pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
+                            <span class="text-zinc-400">ساعات المذاكرة:</span>
+                            <span id="ins-study-hours" class="font-extrabold text-white">0.0 ساعة</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Weekly Vertical Bar Chart -->
+                    <div class="lux-card p-5 flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-zinc-300">النشاط الأسبوعي</span>
+                            <span id="ins-best-day" class="text-[11px] text-accent font-bold">الأفضل: الخميس</span>
+                        </div>
+                        <div class="h-40 w-full relative">
+                            <canvas id="weekly-bars-canvas"></canvas>
+                        </div>
+                        <div class="pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs">
+                            <span class="text-zinc-400">أكثر مادة مذاكرة:</span>
+                            <span id="ins-top-subject" class="font-extrabold text-accent">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements & Badges -->
+                <div class="lux-card p-5">
+                    <h3 class="text-sm font-extrabold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="award" class="w-4 h-4 text-accent"></i>
+                        <span>الأوسمة والإنجازات</span>
+                    </h3>
+                    <div id="ins-badges-grid" class="grid grid-cols-3 gap-3"></div>
+                </div>
+            </section>
+
+            <!-- ==================== TAB 5: SETTINGS, WALLPAPERS & NOTIFICATIONS ==================== -->
+            <section id="tab-settings" class="tab-view hidden space-y-5 animate-view">
+                <h2 class="text-xl font-black text-white">الإعدادات والتخصيص</h2>
+
+                <!-- User Profile Card -->
+                <div class="lux-card p-5 space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div id="set-avatar-box" class="w-16 h-16 rounded-full bg-accent-soft border border-accent/40 flex items-center justify-center text-3xl overflow-hidden shrink-0">
+                            👑
+                        </div>
+                        <div class="flex-1 space-y-2">
+                            <label class="btn-soft px-3.5 py-2 text-xs font-bold cursor-pointer inline-flex items-center gap-2">
+                                <i data-lucide="camera" class="w-3.5 h-3.5 text-accent"></i>
+                                <span>تغيير الصورة الشخصية</span>
+                                <input type="file" accept="image/*" onchange="uploadUserAvatar(event)" class="hidden">
+                            </label>
+                            <div class="flex gap-1.5">
+                                <button onclick="setUserEmoji('👑')" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10">👑</button>
+                                <button onclick="setUserEmoji('🚀')" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10">🚀</button>
+                                <button onclick="setUserEmoji('⚡')" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10">⚡</button>
+                                <button onclick="setUserEmoji('🧠')" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10">🧠</button>
+                                <button onclick="setUserEmoji('🦁')" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10">🦁</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="text-xs text-zinc-400 block mb-1">اسمك داخل التطبيق</label>
+                            <input type="text" id="set-name-input" class="lux-input text-sm" placeholder="اكتب اسمك...">
+                        </div>
+                        <div>
+                            <label class="text-xs text-zinc-400 block mb-1">وصف قصير أو هدفك</label>
+                            <input type="text" id="set-bio-input" class="lux-input text-sm" placeholder="طالب متفوق / مبرمج">
+                        </div>
+                    </div>
+                    <button onclick="saveUserIdentity()" class="btn-gold px-5 py-2.5 text-xs">حفظ البيانات</button>
+                </div>
+
+                <!-- Themes & Ambient Wallpapers -->
+                <div class="lux-card p-5 space-y-4">
+                    <h3 class="text-sm font-extrabold text-white">المظهر والألوان</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                        <button onclick="applyTheme('royal-gold')" class="p-2.5 rounded-2xl border border-amber-500/40 bg-zinc-900 text-amber-400 text-xs font-bold">ذهبي ملكي</button>
+                        <button onclick="applyTheme('sapphire-blue')" class="p-2.5 rounded-2xl border border-blue-500/40 bg-zinc-900 text-blue-400 text-xs font-bold">أزرق ياقوتي</button>
+                        <button onclick="applyTheme('emerald-mint')" class="p-2.5 rounded-2xl border border-emerald-500/40 bg-zinc-900 text-emerald-400 text-xs font-bold">أخضر زمردي</button>
+                        <button onclick="applyTheme('amethyst-purple')" class="p-2.5 rounded-2xl border border-purple-500/40 bg-zinc-900 text-purple-400 text-xs font-bold">بنفسجي ملكي</button>
+                        <button onclick="applyTheme('rose-crimson')" class="p-2.5 rounded-2xl border border-rose-500/40 bg-zinc-900 text-rose-400 text-xs font-bold">أحمر قرمزي</button>
+                    </div>
+
+                    <div class="pt-2">
+                        <label class="text-xs text-zinc-400 block mb-2">خلفية التطبيق</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="setBgEngine('gold-dust')" data-bge="gold-dust" class="bge-btn p-3 rounded-2xl border border-accent bg-accent-soft text-xs font-bold text-white text-center">✨ غبار ذهبي</button>
+                            <button onclick="setBgEngine('nebula')" data-bge="nebula" class="bge-btn p-3 rounded-2xl btn-soft text-xs font-bold text-zinc-300 text-center">🌌 سديم هادئ</button>
+                            <button onclick="setBgEngine('obsidian')" data-bge="obsidian" class="bge-btn p-3 rounded-2xl btn-soft text-xs font-bold text-zinc-300 text-center">🌑 أسود نقي</button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2 pt-2">
+                        <label class="btn-soft px-4 py-2.5 text-xs font-bold cursor-pointer flex-1 text-center">
+                            <span>🖼️ اختيار صورة خلفية من جهازك</span>
+                            <input type="file" accept="image/*" onchange="uploadCustomWallpaper(event)" class="hidden">
+                        </label>
+                        <button onclick="removeCustomWallpaper()" class="btn-soft px-4 py-2.5 text-xs text-rose-400">إزالة الصورة</button>
+                    </div>
+                </div>
+
+                <!-- Notifications Manager (Inspired by Reference Image 1 Bottom) -->
+                <div class="lux-card p-5 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                            <i data-lucide="bell" class="w-4 h-4 text-accent"></i>
+                            <span>الإشعارات والتنبيهات</span>
+                        </h3>
+                        <button onclick="enableBrowserNotifications()" class="btn-gold px-3.5 py-1.5 text-xs">تفعيل الإشعارات</button>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <input type="text" id="notif-title-inp" placeholder="تذكير (مثلاً: وقت المذاكرة)" class="lux-input text-xs flex-1">
+                        <input type="time" id="notif-time-inp" class="lux-input text-xs w-28">
+                        <button onclick="addCustomReminder()" class="btn-soft px-3.5 text-xs font-bold text-accent">+</button>
+                    </div>
+
+                    <div id="settings-reminders-list" class="space-y-2"></div>
+
+                    <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400 leading-relaxed">
+                        <strong class="text-zinc-200">ملاحظة تقنية صادقة:</strong> التنبيهات الصوتية وإشعارات المتصفح تعمل بدقة طالما التطبيق مفتوح أو يعمل في الخلفية. لإرسال إشعارات والهاتف مغلق تماماً بدون إنترنت، يتم ربط إضافة <code>LocalNotifications</code> عند تحويل المشروع إلى تطبيق أندرويد <strong>APK</strong>.
+                    </div>
+                </div>
+
+                <!-- Backup & Restore -->
+                <div class="lux-card p-5 space-y-3">
+                    <h3 class="text-sm font-extrabold text-white">النسخ الاحتياطي والبيانات</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="exportBackupJSON()" class="btn-soft px-4 py-2.5 text-xs font-bold text-accent">تصدير نسخة احتياطية (JSON)</button>
+                        <label class="btn-soft px-4 py-2.5 text-xs font-bold cursor-pointer">
+                            <span>استيراد نسخة</span>
+                            <input type="file" accept=".json" onchange="importBackupJSON(event)" class="hidden">
+                        </label>
+                        <button onclick="resetAllDataPrompt()" class="btn-soft px-4 py-2.5 text-xs text-rose-400">إعادة ضبط</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ==================== FLOATING BOTTOM NAVIGATION DOCK (5 CLEAN TABS) ==================== -->
+        <nav class="fixed bottom-0 inset-x-0 z-30 bottom-dock px-3 pt-2 pointer-events-none">
+            <div class="max-w-md mx-auto bg-[#121216]/90 backdrop-blur-2xl border border-white/[0.08] rounded-3xl px-2 py-2 flex items-center justify-around shadow-[0_10px_40px_rgba(0,0,0,0.85)] pointer-events-auto">
+                <button onclick="switchTab('home')" data-tab="home" class="dock-btn flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl text-accent bg-accent-soft transition-all">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-extrabold">الرئيسية</span>
+                </button>
+                <button onclick="switchTab('plan')" data-tab="plan" class="dock-btn flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl text-zinc-400 hover:text-white transition-all">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-bold">المهام</span>
+                </button>
+                <button onclick="switchTab('focus')" data-tab="focus" class="dock-btn flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl text-zinc-400 hover:text-white transition-all">
+                    <i data-lucide="timer" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-bold">التركيز</span>
+                </button>
+                <button onclick="switchTab('insights')" data-tab="insights" class="dock-btn flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl text-zinc-400 hover:text-white transition-all">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-bold">إحصائياتي</span>
+                </button>
+                <button onclick="switchTab('settings')" data-tab="settings" class="dock-btn flex flex-col items-center gap-1 px-3 py-1.5 rounded-2xl text-zinc-400 hover:text-white transition-all">
+                    <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+                    <span class="text-[10px] font-bold">الإعدادات</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Custom Modal Overlay -->
+    <div id="modal-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div id="modal-box" class="lux-card lux-card-gold max-w-md w-full p-6 max-h-[88vh] overflow-y-auto"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-box" class="fixed top-20 left-4 right-4 z-[60] flex flex-col items-center gap-2 pointer-events-none"></div>
+
+    <script>
+        /* =========================================================================
+           DAYCORE DARK LUXURY OS - CLEAN STATE & LOGIC ENGINE
+           ========================================================================= */
+        const DB_KEY = 'DAYCORE_LUXURY_V4';
+
+        const INITIAL_DATA = {
+            user: {
+                name: 'معاذ',
+                bio: 'طالب طموح • نظام حياتي ال
