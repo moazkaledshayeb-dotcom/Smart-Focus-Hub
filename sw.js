@@ -1,4 +1,4 @@
-const CACHE = 'daycore-v2';
+const CACHE = 'daycore-v3';
 const FILES = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', event => {
