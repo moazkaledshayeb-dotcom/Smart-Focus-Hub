@@ -1,4 +1,4 @@
-const CACHE = 'lifeos-cyber-v1';
+const CACHE = 'daycore-v2';
 const FILES = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', event => {
