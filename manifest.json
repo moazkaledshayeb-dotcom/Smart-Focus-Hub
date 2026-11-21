@@ -1,12 +1,12 @@
 {
-  "name": "Life OS — Cyber Command",
-  "short_name": "Life OS",
-  "description": "Your personal cyber command center",
+  "name": "DAYCORE — نظام يومك",
+  "short_name": "DAYCORE",
+  "description": "نظامك الشخصي لتنظيم الوقت والعادات والتركيز",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#070b12",
+  "background_color": "#080a0e",
   "theme_color": "#070b12",
   "lang": "ar",
   "dir": "rtl"
