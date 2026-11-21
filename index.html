@@ -161,7 +161,7 @@ h1{font-size:clamp(23px,3vw,34px);margin:4px 0 0;line-height:1.4}h1 span{color:v
 <nav class="mobile-nav" id="mobileNav"><button class="active" data-page="home"><span>⌂</span>الرئيسية</button><button data-page="tasks"><span>▣</span>المهام</button><button data-page="habits"><span>◈</span>العادات</button><button data-page="focus"><span>◷</span>التركيز</button><button data-page="stats"><span>▥</span>تحليل</button><button data-page="settings"><span>⚙</span>إعدادات</button></nav>
 <div class="modal-back" id="modal"><div class="modal"><div style="display:flex;justify-content:space-between;align-items:center"><h3 id="modalTitle">إضافة</h3><button class="icon-btn" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div><div class="toast" id="toast"></div>
 <script>
-const KEY='lifeos_cyber_v1';
+const KEY='lifeos_v1';
 const defaults=()=>({name:'معاذ شعيب',tasks:[],habits:[{id:1,name:'المذاكرة',icon:'📚'},{id:2,name:'قراءة',icon:'📖'},{id:3,name:'رياضة',icon:'⚡'},{id:4,name:'ترتيب اليوم',icon:'🧭'}],habitDone:{},prayers:{},adhkar:{},quran:0,water:{},workouts:[],goals:[],notes:[],focus:0,created:Date.now()});
 let data=load(),taskFilter='all',timerSeconds=1500,timerRunning=false,timerHandle=null;
 function load(){try{return {...defaults(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return defaults()}}
